@@ -1,4 +1,39 @@
-# lta-aws-data-pipeline
+# 🚀 LTA AWS Data Pipeline 
+
+## 📌 Overview
+
+This project demonstrates a complete **cloud-based data engineering pipeline** built using **Python, AWS S3, and Athena**.
+
+The pipeline ingests real-time transport data from Singapore’s LTA API, stores it in a cloud data lake, transforms it into structured format, and enables SQL-based analytics using Athena.
+
+---
+
+## 🎯 Problem Statement
+
+Transport data from APIs is often unstructured and not stored for historical analysis. This project solves that by:
+
+- Ingesting real-time API data
+- Storing raw data in a scalable cloud storage (S3)
+- Transforming nested JSON into structured tabular data
+- Enabling analytics using SQL without managing infrastructure
+
+---
+
+## 🏗️ Architecture
+
+LTA API
+↓
+Python Ingestion
+↓
+S3 (Raw Layer)
+↓
+Python Transformation
+↓
+S3 (Processed Layer)
+↓
+Athena (SQL Queries)
+↓
+Results stored in S3
 
 ---
 
@@ -18,6 +53,39 @@
 - Service frequency analysis
 - Load distribution
 - Data completeness checks
+
+---
+
+## 🔄 Folder Structure
+
+---
+
+│
+├── data/                     
+│   ├── raw/
+│   └── processed/
+│
+├── src/
+│   ├── ingestion/
+│   │   ├── fetch_lta_data.py
+│   │   └── upload_to_s3.py
+│   │
+│   ├── transformation/
+│   │   ├── transform_data.py
+│   │   └── upload_processed_to_s3.py
+│   │
+│   ├── utils/
+│   │   └── aws_helper.py
+│
+├── config/
+│   └── config.py
+│
+├── screenshots/             
+│
+├── requirements.txt
+├── README.md
+├── .gitignore
+└── .env                   
 
 ---
 
