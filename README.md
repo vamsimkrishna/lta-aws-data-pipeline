@@ -21,20 +21,45 @@ Transport data from APIs is often unstructured and not stored for historical ana
 
 ## 🏗️ Architecture
 
-LTA API
-↓
-Python Ingestion
-↓
-S3 (Raw Layer)
-↓
-Python Transformation
-↓
-S3 (Processed Layer)
-↓
-Athena (SQL Queries)
-↓
-Results stored in S3
-
+      +-------------------------+
+      |   LTA API / Source Data |
+      +-------------------------+
+                  │
+                  ▼
+      +-------------------------+
+      |   Python Ingestion      |
+      |   (requests)            |
+      +-------------------------+
+                  │
+                  ▼
+      +-------------------------+
+      |   Amazon S3 Raw Layer   |
+      |   (JSON Storage)        |
+      +-------------------------+
+                  │
+                  ▼
+      +-------------------------+
+      |   Python Transform      |
+      |   (pandas)              |
+      +-------------------------+
+                  │
+                  ▼
+      +-------------------------+
+      | Amazon S3 Processed     |
+      | Layer (CSV KPI Ready)   |
+      +-------------------------+
+                  │
+                  ▼
+      +-------------------------+
+      |   Amazon Athena         |
+      |   (SQL Analytics)       |
+      +-------------------------+
+                  │
+                  ▼
+      +-------------------------+
+      | Query Results / Reports |
+      | Stored in S3            |
+      +-------------------------+
 ---
 
 ## 🔄 Pipeline Flow
@@ -56,10 +81,9 @@ Results stored in S3
 
 ---
 
-## 🔄 Folder Structure
+## 📂 Project Structure
 
----
-
+```
 │
 ├── data/                     
 │   ├── raw/
@@ -87,8 +111,9 @@ Results stored in S3
 ├── .gitignore
 └── .env                   
 
----
+```
 
+---
 ## 🚀 Key Features
 
 - Modular pipeline design
